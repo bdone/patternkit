@@ -128,7 +128,7 @@ function patternkit_menu() {
     'description' => 'Configure Patternkit Pattern Library Support.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('patternkit_config_form'),
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer patternkit'),
   );
   $items['patternkit/ajax/%/%/schema'] = array(
     'page callback' => 'patternkit_api_pattern_schema',
@@ -136,4 +136,15 @@ function patternkit_menu() {
     'access callback' => TRUE,
   );
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function patternkit_permission() {
+  return array(
+    'administer patternkit' => array(
+      'title' => t('Administer Patternkit'),
+    ),
+  );
 }
